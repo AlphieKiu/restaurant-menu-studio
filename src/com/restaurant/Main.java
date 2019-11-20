@@ -1,13 +1,18 @@
 package com.restaurant;
-
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        Menu menu = new Menu ("Alphie's Restaurant");
-        menu.addItem(new MenuItem("fries", "french fries with housemade ketchup", "side", 5.0, true));
 
-        System.out.println(menu.getName());
-        System.out.println(menu.getItems());
+        MenuItem fries = new MenuItem("French Fries with Housemade Ketchup", "Appetizer", 4.99, true);
+
+        MenuItem chocolatePudding = new MenuItem ("Chocolate Pudding with Vanilla Cream", "dessert", 5.99, true);
+        Menu deathByChocolate = new Menu();
+
+        deathByChocolate.addItem(fries);
+        deathByChocolate.addItem(chocolatePudding);
+
+        System.out.println(deathByChocolate);
     }
 }

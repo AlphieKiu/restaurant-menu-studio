@@ -4,31 +4,41 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Menu {
-    private String name;
-    private ArrayList<MenuItem> items = new ArrayList<MenuItem>();
 
-    public Menu(String name) {this.name = name;}
+    private ArrayList<MenuItem> items;
+    private Date lastUpdated;
 
-    public String getName() {return name;}
+    public Menu() {
+        this.items = new ArrayList<>();
+        this.lastUpdated = new Date();
+    }
 
-    public void setName(String aName) { name= aName;}
+    public void addItem(MenuItem aItem) {
+        items.add(aItem);
+        this.lastUpdated = new Date();
+    }
 
-    public void addItem(MenuItem aItem) {items.add(aItem);}
+    public void removeItem(MenuItem item){
+        this.items.remove(item);
+        this.lastUpdated = new Date();
 
-    public ArrayList<String> getItems() {
-        ArrayList<String> items = new ArrayList<>();
+    }
 
-        for (MenuItem item: this.items) {
-            String lineItem ="";
-
-            lineItem += item.getName() + "\t";
-            lineItem += item.getDescription() + "\t";
-            lineItem += item.getCategory() + "\t";
-            lineItem += item.getPrice() + "\t";
-            lineItem += item.getIfNew();
-
-            items.add(lineItem);
-        }
+    public ArrayList<MenuItem> getItems() {
         return items;
+    }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    @Override
+    public String toString() {
+        String menu = "";
+        for (MenuItem item : items) {
+            menu += item + "\n";
+        }
+        menu += lastUpdated;
+        return menu;
     }
 }

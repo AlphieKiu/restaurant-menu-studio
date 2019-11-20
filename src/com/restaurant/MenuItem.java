@@ -1,67 +1,76 @@
 package com.restaurant;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class MenuItem {
 
-    private Integer id;
-    private String name;
     private String description;
     private String category;
-    private double price;
-    private Date lastUpdateDate;
+    private Double price;
+    private boolean isNew;
 
-    public MenuItem(Integer id, String name, String description, String category, double price, Date lastUpdateDate) {
-        this.id = id;
-        this.name = name;
+    public MenuItem( String description, String category, Double price, boolean isNew) {
+
         this.description = description;
         this.category = category;
         this.price = price;
-        this.lastUpdateDate = lastUpdateDate;
-    }
-    public Integer getID() { return id; }
-
-    public String getName() {
-        return name;
+        this.isNew = true;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getCategory() {
         return category;
     }
 
-    public double getPrice() {
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Double getPrice() {
         return price;
     }
 
-    public Boolean getLastUpdateDate() {
-        return lastUpdateDate;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
-    public void setId(Integer aId) { this.id = aId}
-
-    public void setName(String aName) {
-        this.name = aName;
+    public boolean getIsNew() {
+        return isNew;
     }
 
-    public void setDescription(String aDescription) {
-        this.description = aDescription;
+    public void setIsNew(boolean isNew) {
+        this.isNew = isNew;
     }
 
-    public void setCategory(String aCategory) {
-        this.category = aCategory;
+    @Override
+    public String toString() {
+        return "MenuItem{" +
+                "description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                ", isNew=" + isNew +
+                '}';
     }
 
-    public void setPrice(double aPrice) {
-        this.price = aPrice;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MenuItem menuItem = (MenuItem) o;
+        return Objects.equals(description, menuItem.description) &&
+                Objects.equals(category, menuItem.category);
     }
 
-    public void setLastUpdateDate(Date aLastUpdateDate) {
-        this.lastUpdateDate = aLastUpdateDate;
+    @Override
+    public int hashCode() {
+        return Objects.hash(description, category);
     }
-
-
 }
